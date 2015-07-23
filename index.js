@@ -58,6 +58,22 @@ Client.prototype.open = function(params, callback) {
   });
 };
 
+Client.prototype.edit = function(params, callback) {
+  var enc = proto.EditReq;
+  var dec = proto.EditRes;
+  var buffer = enc.encode(params).toBuffer();
+
+  this._client.call('edit', buffer, function (err, data) {
+    if(err) {
+      callback(err);
+      return;
+    }
+
+    var res = dec.decode(data);
+    callback(null, res);
+  });
+};
+
 Client.prototype.info = function(callback) {
   var enc = proto.InfoReq;
   var dec = proto.InfoRes;
