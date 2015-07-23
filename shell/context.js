@@ -11,6 +11,10 @@ function create(options) {
     process.exit(0);
   };
 
+  context.pretty = function(val) {
+    console.log(JSON.stringify(val, null, 2));
+  };
+
   context.use = function(name) {
     database = name;
   }
@@ -36,6 +40,22 @@ function create(options) {
       segmentLength: 100000,
       maxROEpochs:   10,
       maxRWEpochs:   2,
+    };
+  };
+
+  context.edit = function(params) {
+    return client.editFuture(params).wait();
+  };
+
+  context.edit.help = function() {
+    console.log('HELP_EDIT');
+  }
+
+  context.edit.example = function() {
+    return {
+      name:          "test",
+      maxROEpochs:   50,
+      maxRWEpochs:   3,
     };
   };
 

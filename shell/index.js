@@ -27,6 +27,12 @@ Future.task(function() {
 
 function evalInFibers(cmd, ctx, file, callback) {
   Future.task(function() {
-    callback(null, vm.runInContext(cmd, ctx));
+    try {
+      var res = vm.runInContext(cmd, ctx);
+    } catch (e) {
+      callback(e)
+    }
+
+    callback(res)
   }).detach();
 }
