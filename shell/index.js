@@ -33,6 +33,6 @@ function evalInFibers(cmd, ctx, file, callback) {
       callback(e)
     }
 
-    callback(res)
+    callback(null, res);
   }).detach();
 }
