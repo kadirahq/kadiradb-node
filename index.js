@@ -86,6 +86,11 @@ Client.prototype.info = function(callback) {
     }
 
     var res = dec.decode(data);
+
+    res.databases.forEach(function (db) {
+      db.resolution = db.resolution.toNumber();
+    });
+
     callback(null, res);
   });
 };
