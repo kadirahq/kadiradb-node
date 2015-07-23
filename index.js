@@ -70,6 +70,12 @@ Client.prototype.edit = function(params, callback) {
     }
 
     var res = dec.decode(data);
+
+    res.databases.forEach(function (db) {
+      var resolution = db.resolution;
+      db.resolution = resolution.high*Math.pow(2, 32) + resolution.low;
+    });
+
     callback(null, res);
   });
 };
