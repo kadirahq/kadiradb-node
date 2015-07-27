@@ -7,6 +7,7 @@
     "kmdb": "./shell/index.js"
   },
   "dependencies": {
+    "fibers": "1.0.x",
     "protobufjs": "4.0.x",
     "simple-rpc": "2.0.x"
   },
