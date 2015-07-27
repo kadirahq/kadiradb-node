@@ -14,8 +14,9 @@ client.connect(function (err) {
 
 function start () {
   var req = {
-    name: "test",
+    database: "test",
 		resolution: 60,
+		retention: 86400,
 		epochTime: 3600,
 		maxROEpochs: 10,
 		maxRWEpochs: 2,

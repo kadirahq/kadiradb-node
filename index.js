@@ -55,7 +55,6 @@ Client.prototype.info = function(callback) {
 };
 
 Client.prototype.put = function(req, callback) {
-  console.log(req);
   this._call('put', req, proto.PutReq, proto.PutRes, callback);
 };
 
@@ -105,7 +104,6 @@ Client.prototype._call = function(method, req, enc, dec, callback) {
 
   this._client.call(method, buffer, function (err, data) {
     if(err) {
-      console.log(err.toString());
       callback(err);
       return;
     }
