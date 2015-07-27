@@ -3,6 +3,9 @@
   "version": "3.0.0",
   "description": "NodeJS client for KMDB",
   "main": "index.js",
+  "bin": {
+    "kmdb": "./shell/index.js"
+  },
   "dependencies": {
     "protobufjs": "4.0.x",
     "simple-rpc": "2.0.x"
