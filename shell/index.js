@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var vm = require('vm');
 var repl = require('repl');
 var Future = require('fibers/future');
