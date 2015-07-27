@@ -11,9 +11,9 @@ setInterval(function () {
   counter = 0;
 }, 1000);
 
-var reqs = [];
+var batch = [];
 for(var i=0; i<BATCH_SIZE; ++i) {
-  reqs[i] = {
+  batch[i] = {
     database: 'test',
     fields: ['a', 'b', 'c', 'd'],
     value: 100,
@@ -39,10 +39,10 @@ function start () {
 }
 
 function send () {
-  var now = Date.now() * 1000000;
+  var now = Math.floor(Date.now() / 1000);
 
   for(var i=0; i<BATCH_SIZE; ++i) {
-    var req = reqs[i];
+    var req = batch[i];
     req.timestamp = now;
     if(RANDOMIZE) {
       req.fields[0] = "a" + Math.floor(1000 * Math.random());
@@ -52,7 +52,7 @@ function send () {
     }
   }
 
-  client.inc(reqs, function (err, res) {
+  client.incBatch(batch, function (err, res) {
     if(err) {
       console.error(err);
     } else {

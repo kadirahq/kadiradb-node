@@ -23,8 +23,8 @@ function create(options) {
     return client.infoFuture().wait();
   };
 
-  context.open = function(params) {
-    return client.openFuture(params).wait();
+  context.open = function(req) {
+    return client.openFuture(req).wait();
   };
 
   context.open.help = function() {
@@ -33,18 +33,16 @@ function create(options) {
 
   context.open.example = function() {
     return {
-      name:          "test",
-      resolution:    60e9,
-      epochDuration: 3600e9,
-      payloadSize:   16,
-      segmentLength: 100000,
-      maxROEpochs:   10,
-      maxRWEpochs:   2,
+      name: "test",
+      resolution: 60,
+      epochTime: 3600,
+      maxROEpochs: 10,
+      maxRWEpochs: 2,
     };
   };
 
-  context.edit = function(params) {
-    return client.editFuture(params).wait();
+  context.edit = function(req) {
+    return client.editFuture(req).wait();
   };
 
   context.edit.help = function() {
@@ -53,22 +51,15 @@ function create(options) {
 
   context.edit.example = function() {
     return {
-      name:          "test",
-      maxROEpochs:   50,
-      maxRWEpochs:   3,
+      name: "test",
+      maxROEpochs: 50,
+      maxRWEpochs: 3,
     };
   };
 
-  context.put = function(reqs) {
-    if(!Array.isArray(reqs)) {
-      reqs = [reqs];
-    }
-
-    reqs.forEach(function(req) {
-      req.database = req.database || database;
-    });
-
-    return client.putFuture(reqs).wait();
+  context.put = function(req) {
+    req.database = database;
+    return client.putFuture(req).wait();
   };
 
   context.put.help = function() {
@@ -77,23 +68,16 @@ function create(options) {
 
   context.put.example = function() {
     return {
-      timestamp: Date.now() * 1e6,
+      timestamp: Math.floor(Date.now() / 1000),
       fields: ['a', 'b', 'c', 'd'],
       value: 100,
       count: 10,
     };
   };
 
-  context.inc = function(reqs) {
-    if(!Array.isArray(reqs)) {
-      reqs = [reqs];
-    }
-
-    reqs.forEach(function(req) {
-      req.database = req.database || database;
-    });
-
-    return client.incFuture(reqs).wait();
+  context.inc = function(req) {
+    req.database = database;
+    return client.incFuture(req).wait();
   };
 
   context.inc.help = function() {
@@ -102,34 +86,27 @@ function create(options) {
 
   context.inc.example = function() {
     return {
-      timestamp: Date.now() * 1e6,
+      timestamp: Math.floor(Date.now() / 1000),
       fields: ['a', 'b', 'c', 'd'],
       value: 100,
       count: 10,
     };
   };
 
-  context.get = function(reqs) {
-    if(!Array.isArray(reqs)) {
-      reqs = [reqs];
-    }
-
-    reqs.forEach(function(req) {
-      req.database = req.database || database;
-    });
-
-    return client.getFuture(reqs).wait();
+  context.get = function(req) {
+    req.database = database;
+    return client.getFuture(req).wait();
   };
 
   context.get.help = function() {
-    console.log('HELP_PUT');
+    console.log('HELP_GET');
   };
 
   context.get.example = function() {
-    var now = Date.now() * 1e6;
+    var now = Math.floor(Date.now() / 1000);
 
     return {
-      startTime: now - 3600*1e6,
+      startTime: now - 3600,
       endTime: now,
       fields: ['a', 'b', 'c', 'd'],
       groupBy: [true, true, true, true],

@@ -13,13 +13,13 @@ client.connect(function (err) {
 });
 
 function start () {
-  var params = {
-    name:          "test",
-		maxROEpochs:   50,
-		maxRWEpochs:   3,
+  var req = {
+    name: "test",
+		maxROEpochs: 50,
+		maxRWEpochs: 3,
   };
 
-  client.edit(params, function (err, res) {
+  client.edit(req, function (err, res) {
     if(err) {
       console.error(err);
     }

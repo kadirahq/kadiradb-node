@@ -13,19 +13,12 @@ client.connect(function (err) {
 });
 
 function start () {
-  var req = {
-    name: "test",
-		resolution: 60,
-		epochTime: 3600,
-		maxROEpochs: 10,
-		maxRWEpochs: 2,
-  };
-
-  client.open(req, function (err, res) {
+  client.info(function (err, res) {
     if(err) {
       console.error(err);
     }
 
+    console.log(res);
     process.exit(0);
   });
 }
