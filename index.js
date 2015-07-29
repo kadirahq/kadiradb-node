@@ -54,6 +54,10 @@ Client.prototype.info = function(callback) {
   this._call('info', {}, proto.InfoReq, proto.InfoRes, callback);
 };
 
+Client.prototype.metrics = function(callback) {
+  this._call('metrics', {}, proto.MetricsReq, proto.MetricsRes, callback);
+};
+
 Client.prototype.put = function(req, callback) {
   this._call('put', req, proto.PutReq, proto.PutRes, callback);
 };

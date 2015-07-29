@@ -15,12 +15,16 @@ function create(options) {
     console.log(JSON.stringify(val, null, 2));
   };
 
-  context.use = function(name) {
-    database = name;
+  context.use = function(_database) {
+    database = _database;
   }
 
   context.info = function() {
     return client.infoFuture().wait();
+  };
+
+  context.metrics = function() {
+    return client.metricsFuture().wait();
   };
 
   context.open = function(req) {
@@ -33,7 +37,7 @@ function create(options) {
 
   context.open.example = function() {
     return {
-      name: "test",
+      database: "test",
       resolution: 60,
       epochTime: 3600,
       maxROEpochs: 10,
@@ -51,7 +55,7 @@ function create(options) {
 
   context.edit.example = function() {
     return {
-      name: "test",
+      database: "test",
       maxROEpochs: 50,
       maxRWEpochs: 3,
     };

@@ -16,6 +16,7 @@ Future.task(function() {
   client.connectFuture().wait();
 
   var shell = repl.start({
+    prompt: "❯",
     ignoreUndefined: true,
     eval: evalInFibers,
   });
