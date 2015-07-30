@@ -62,7 +62,10 @@ function create(options) {
   };
 
   context.put = function(req) {
-    req.database = database;
+    if(!req.database) {
+      req.database = database;
+    }
+
     return client.putFuture(req).wait();
   };
 
@@ -80,7 +83,10 @@ function create(options) {
   };
 
   context.inc = function(req) {
-    req.database = database;
+    if(!req.database) {
+      req.database = database;
+    }
+
     return client.incFuture(req).wait();
   };
 
@@ -98,7 +104,10 @@ function create(options) {
   };
 
   context.get = function(req) {
-    req.database = database;
+    if(!req.database) {
+      req.database = database;
+    }
+    
     return client.getFuture(req).wait();
   };
 
