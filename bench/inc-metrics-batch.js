@@ -1,7 +1,7 @@
 var Client = require('../');
 
 var BATCH_SIZE = 100;
-var ADDRESS = 'kmdb://localhost:19000';
+var ADDRESS = 'kdb://localhost:19000';
 var RANDOMIZE = true;
 var CONCURRENCY = 5;
 

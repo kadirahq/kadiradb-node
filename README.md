@@ -1,6 +1,6 @@
-# KadiraDB - metrics
+# KadiraDB
 
-NodejS client for KadiraDB metrics database and a shell to interact with the database server.
+NodejS client for KadiraDB database and a shell to interact with the database server.
 
 
 
@@ -9,39 +9,39 @@ NodejS client for KadiraDB metrics database and a shell to interact with the dat
 Use npm to install the module.
 
 ``` shell
-npm install --save kmdb-node
+npm install --save kadiradb
 ```
 
 A connection should be made before making requests. The client has some useful methods which can be seen under the **Module API** section below.
 
 ``` javascript
-var KMDB = require('kmdb-node');
-var client = new KMDB('kmdb://localhost:19000');
+var KadiraDB = require('kadiradb');
+var client = new KadiraDB('kdb://localhost:19000');
 
 client.connect(function (err) {
   if(err) {
     console.error(err);
     throw err;
   }
-  
+
   // client is ready
 });
 ```
 
 
 
-## KadiraDB Metrics Shell
+## KadiraDB Shell
 
-Instilling it globally also installs the `kmdb` command line tool. Which is an interactive shell useful for interacting with and debugging the database server. The `kmdb` command accepts 2 arguments (both are optional).
+Instilling it globally also installs the `kadiradb` command line tool. Which is an interactive shell useful for interacting with and debugging the database server. The `kadiradb` command accepts 2 arguments (both are optional).
 
 ``` shell
-npm install --global kmdb-node
-kmdb 'kmdb://localhost:19000' 'mydb'
+npm install --global kadiradb
+kadiradb 'kdb://localhost:19000' 'mydb'
 ```
 
 ### Crating a DB
 
-Let's assume that we need to create **a database to store the temperature of major cities in Sri Lanka with 1-minute resolution and we need to keep data for 30 days**. Run this command in your kadiradb-metrics shell.
+Let's assume that we need to create **a database to store the temperature of major cities in Sri Lanka with 1-minute resolution and we need to keep data for 30 days**. Run this command in your kadiradb shell.
 
 ``` javascript
 ❯ open({database: 'temperature', resolution: 60, retention: 2592000, epochTime: 86400, maxROEpochs: 10, maxRWEpochs: 2})
@@ -257,7 +257,7 @@ client.getBatch(reqs, function(err) {
 
 Close the connection.
 
-``` 
+```
 client.close(reqs, function(err) {
   //
 });
@@ -265,9 +265,8 @@ client.close(reqs, function(err) {
 
 
 
-``` 
+```
 client.connect(function(err) {
   //
 });
 ```
-

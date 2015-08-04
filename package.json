@@ -1,10 +1,10 @@
 {
-  "name": "kmdb-node",
-  "version": "5.0.2",
-  "description": "NodeJS client for KMDB",
+  "name": "kadiradb",
+  "version": "0.0.0",
+  "description": "NodeJS client for kadiradb",
   "main": "index.js",
   "bin": {
-    "kmdb": "./shell/index.js"
+    "kadiradb": "./shell/index.js"
   },
   "dependencies": {
     "fibers": "1.0.x",
@@ -17,15 +17,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kadirahq/kadiradb-metrics-node.git"
+    "url": "git+https://github.com/kadirahq/kadiradb-node.git"
   },
   "keywords": [
-    "kmdb"
+    "kadiradb"
   ],
   "author": "Kadira Inc.",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/kadirahq/kadiradb-metrics-node/issues"
+    "url": "https://github.com/kadirahq/kadiradb-node/issues"
   },
-  "homepage": "https://github.com/kadirahq/kadiradb-metrics-node#readme"
+  "homepage": "https://github.com/kadirahq/kadiradb-node#readme"
 }

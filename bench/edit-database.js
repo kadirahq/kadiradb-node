@@ -1,6 +1,6 @@
 var Client = require('../');
 
-var ADDRESS = 'kmdb://localhost:19000';
+var ADDRESS = 'kdb://localhost:19000';
 
 var client = new Client(ADDRESS);
 client.connect(function (err) {

@@ -142,15 +142,15 @@ Client.prototype._batch = function(batch, enc, dec, callback) {
 Client.prototype._reconnect = function() {
   var self = this;
 
-  console.error('kmdb: reconnecting');
+  console.error('kdb: reconnecting');
   this._client.connect(function (err) {
     if(!err) {
-      console.error('kmdb: reconnected');
+      console.error('kdb: reconnected');
       self.emit('connect');
       return;
     }
 
-    console.error('kmdb: reconnect failed: ', err);
+    console.error('kdb: reconnect failed: ', err);
 
     if(self._reconnectTimer) {
       clearTimeout(self._reconnectTimer);
@@ -164,7 +164,7 @@ Client.prototype._reconnect = function() {
 };
 
 Client.prototype._onerror = function(err) {
-  console.error('kmdb: error', err);
+  console.error('kdb: error', err);
   this.emit('error', err);
 };
 
@@ -174,7 +174,7 @@ Client.prototype._onclose = function() {
   }
 
   if(!this._closedByUser) {
-    console.error('kmdb: connection lost');
+    console.error('kdb: connection lost');
     var timeout = this.config.reconnect.timeout;
     this._reconnectTimer = setTimeout(this.__reconnect, timeout);
   }

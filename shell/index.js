@@ -8,7 +8,7 @@ var Context = require('./context');
 
 Future.task(function() {
   var args = {
-    address: process.argv[2] || 'kmdb://localhost:19000',
+    address: process.argv[2] || 'kdb://localhost:19000',
     database: process.argv[3],
   };
 
